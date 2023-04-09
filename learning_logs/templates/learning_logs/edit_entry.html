@@ -1,0 +1,14 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+  
+  <p>Edit entry:</p>
+
+  <form action="{% url 'learning_logs:edit_entry' entry.id %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="hidden" name="topic_id" value="{{ topic_id }}">  <!-- Add this line to pass topic_id -->
+      <button type="submit" name="submit">Save changes</button>
+  </form>
+
+{% endblock content %}
